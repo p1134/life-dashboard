@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+<div class="wrapper">
+
+    <div class="heading">
+        <div class="heading__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 256 256"><path fill="#fff" d="m219.31 108.68l-80-80a16 16 0 0 0-22.62 0l-80 80A15.87 15.87 0 0 0 32 120v96a8 8 0 0 0 8 8h64a8 8 0 0 0 8-8v-56h32v56a8 8 0 0 0 8 8h64a8 8 0 0 0 8-8v-96a15.87 15.87 0 0 0-4.69-11.32M208 208h-48v-56a8 8 0 0 0-8-8h-48a8 8 0 0 0-8 8v56H48v-88l80-80l80 80Z"/></svg>
+        </div>
+        <div class="heading__text">
+            <p class="heading__text--main">Mój dom</p>
+            <p class="heading__text--sub">System czujników</p>
+        </div>
+    </div>
+
+    <div class="container-box">
+        <div class="container-box__heading">
+            <p>Sypialnia</p>
+            <div class="status status--{{ status }}"></div>
+        </div>
+        <div class="container-box__content">
+            <div class="measure-box">
+                <div class="measure-box__icon measure-box__icon--temp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                        <path fill="#FF7F00" d="M12 15a2 2 0 1 0 2 2a2 2 0 0 0-2-2m4.5-2V5.5a4.5 4.5 0 0 0-9 0V13a6 6 0 0 0 3.21 9.83A7 7 0 0 0 12 23a6 6 0 0 0 4.5-10m-2 7.07a4 4 0 0 1-5.32-6a1 1 0 0 0 .3-.71V5.5a2.5 2.5 0 0 1 5 0v7.94a1 1 0 0 0 .3.71a4 4 0 0 1-.28 6Z"/>
+                    </svg>
+                </div>
+                <div class="measure-box--text">
+                    <p class="measure-box__text--value">{{ lastData.temperature }}°C</p>
+                </div>
+            </div>
+            <div class="measure-box">
+                <div class="measure-box__icon measure-box__icon--humidity">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32">
+                        <path fill="rgba(0, 132, 255, 1)" d="M26 12a3.9 3.9 0 0 1-4-3.777a3.9 3.9 0 0 1 .653-2.064l2.517-3.745a1.038 1.038 0 0 1 1.66 0l2.485 3.696A3.97 3.97 0 0 1 30 8.223A3.9 3.9 0 0 1 26 12m0-7.237l-1.656 2.463a1.9 1.9 0 0 0-.344.997a2.014 2.014 0 0 0 4 0a2 2 0 0 0-.375-1.047zM23.5 30h-15a6.496 6.496 0 0 1-1.3-12.862a8.994 8.994 0 0 1 17.6 0A6.496 6.496 0 0 1 23.5 30M16 12a7 7 0 0 0-6.941 6.145l-.1.812l-.815.064A4.496 4.496 0 0 0 8.5 28h15a4.496 4.496 0 0 0 .356-8.979l-.815-.064l-.099-.812A7 7 0 0 0 16 12" stroke-width="1" stroke="rgba(0, 132, 255, 1)" />
+                    </svg>
+                </div>
+                <div class="measure-box--text">
+                    <p class="measure-box__text--value">{{ lastData.humidity }}%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="heading__sub">Dodatkowe czujniki</p>
+    <div class="container-box">
+        <div class="container-box__heading container-box__heading--sub">
+            <p>Ciśnienie</p>
+        </div>
+        <div class="container-box__content">
+            <div class="measure-box">
+                <div class="measure-box__icon measure-box__icon--pressure">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                        <g fill="none">
+                            <path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                            <path fill="rgba(147, 0, 232, 1)" d="M12 2c5.523 0 10 4.477 10 10a9.97 9.97 0 0 1-2.938 7.08c-.4.4-1.05.392-1.44-.013l-.842-.873a1 1 0 1 1 1.44-1.388l.098.102a8 8 0 1 0-12.636 0l.098-.102a1 1 0 1 1 1.44 1.388l-.842.873a1.01 1.01 0 0 1-1.44.013A9.97 9.97 0 0 1 2 12C2 6.477 6.477 2 12 2m0 4a1 1 0 0 1 1 1v5.268A2 2 0 0 1 12 16a2 2 0 0 1-1-3.732V7a1 1 0 0 1 1-1" stroke-width="0.5" stroke="rgba(147, 0, 232, 1)" />
+                        </g>
+                    </svg>
+                </div>
+                <div class="measure-box--text">
+                    <p class="measure-box__text--value">{{ lastData.reducedPressure|round }} hPa</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-box--row">
+        <div class="container-box">
+             <div class="container-box__heading container-box__heading--sub">
+                <p>Gazy łatwopalne</p>
+            </div>
+        <div class="container-box__content">
+            <div class="measure-box">
+                <div class="measure-box__icon measure-box__icon--gases">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48">
+                        <path fill="none" stroke="rgba(207, 56, 56, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M36 21c0 7.18-5.82 13-13 13s-13-5.82-13-13s5-10 7-17c8 3.5 8 14 8 14s2-6 8-7.5c.5 5.5 3 7.434 3 10.5M7 36l32 8M7 44l32-8" />
+                    </svg>
+                </div>
+                <div class="measure-box--text">
+                    <p class="measure-box__text--value">{{ gases }} </p>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="container-box">
+             <div class="container-box__heading container-box__heading--sub">
+            <p>Tlenek węgla</p>
+        </div>
+        <div class="container-box__content">
+            <div class="measure-box">
+                <div class="measure-box__icon measure-box__icon--co">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="rgba(156, 197, 41, 1)" d="M8 7c-1.1 0-2 .9-2 2v6a2 2 0 0 0 2 2h3v-2H8V9h3V7zm6 0c-1.1 0-2 .9-2 2v6a2 2 0 0 0 2 2h2c1.11 0 2-.89 2-2V9a2 2 0 0 0-2-2zm0 2h2v6h-2z" />
+                    </svg>
+                </div>
+                <div class="measure-box--text">
+                    <p class="measure-box__text--value">{{ co }}</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="container-box container-box--chart">
+        <div class="container-box__heading container-box__heading--sub">
+            <p>Ostatnie 24h - Temperatura</p>
+        </div>
+        <div class="container__chart">
+            {{ render_chart(last24Chart) }}
+        </div>
+        <div class="break-line"></div>
+        <div class="container-box--row container-box--stats">
+            <div class="chart-box chart-box--mean">
+                <p class="chart-box__label">Średnia</p>
+                <p class="chart-box__value">{{ mean }}°C</p>
+            </div>
+            <div class="chart-box chart-box--mean">
+                <p class="chart-box__label">Min.</p>
+                <p class="chart-box__value">{{ min }}°C</p>
+            </div>
+            <div class="chart-box chart-box--mean">
+                <p class="chart-box__label">Maks.</p>
+                <p class="chart-box__value">{{ max }}°C</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
